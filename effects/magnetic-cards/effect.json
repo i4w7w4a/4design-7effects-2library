@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "id": "magnetic-cards",
+  "title": "Magnetic Cards",
+  "titleRu": "Магнитные карточки",
+  "summary": "Layered cards follow the pointer, tilt in depth, and settle back smoothly.",
+  "summaryRu": "Многослойные карточки тянутся к курсору, наклоняются в глубину и плавно возвращаются.",
+  "aliases": [
+    "магнитный отклик",
+    "магнитное притяжение",
+    "притягивающиеся карточки",
+    "карточки за мышью",
+    "magnetic hover",
+    "magnetic cursor",
+    "pointer attraction",
+    "3d card tilt"
+  ],
+  "tags": ["cards", "hover", "cursor", "pointer", "magnetic", "3d", "depth", "карточки", "курсор", "притяжение", "объем"],
+  "version": "0.1.0",
+  "status": "draft",
+  "demo": "/?effect=magnetic-cards",
+  "controls": "effects/magnetic-cards/controls.schema.json",
+  "implementation": "effects/magnetic-cards/src/",
+  "documentation": "effects/magnetic-cards/README.md",
+  "license": "UNLICENSED",
+  "dependencies": [],
+  "framework": "DOM, TypeScript, CSS",
+  "input": ["pointer", "keyboard", "touch"],
+  "source": {
+    "reference": "Private behavioral prototype; source record retained by the owner",
+    "note": "Behavioral reference only. No source code, branding, or media copied."
+  }
+}

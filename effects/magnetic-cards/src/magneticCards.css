@@ -1,0 +1,168 @@
+/* The outer link or button remains still, so its hit box and focus ring never drift. */
+.magnetic-card {
+  --magnetic-face: #15202b;
+  --magnetic-ink: #f4f7fb;
+  --magnetic-border: rgb(201 225 250 / 28%);
+  --magnetic-focus: #a8d5ff;
+  position: relative;
+  display: block;
+  box-sizing: border-box;
+  padding: 0;
+  border: 0;
+  border-radius: 1.25rem;
+  background: transparent;
+  color: inherit;
+  text-decoration: none;
+  text-align: left;
+  cursor: pointer;
+  isolation: isolate;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.magnetic-card::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  inset: 7% 7% -5%;
+  border-radius: inherit;
+  box-shadow: 0 1.8rem 2.8rem -.6rem rgb(0 6 16 / 56%);
+  opacity: .75;
+  transform: translateY(.3rem) scale(.96);
+  transition: transform .24s cubic-bezier(.2, 0, 0, 1), opacity .24s ease;
+  pointer-events: none;
+}
+
+.magnetic-card:hover::before,
+.magnetic-card:focus-visible::before {
+  opacity: 1;
+  transform: translateY(.7rem) scale(1.02);
+}
+
+.magnetic-card:focus-visible {
+  outline: 3px solid var(--magnetic-focus);
+  outline-offset: 5px;
+}
+
+.magnetic-visual {
+  --magnetic-depth: 36px;
+  --magnetic-glow-strength: .65;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: inherit;
+  overflow: visible;
+  border: 1px solid var(--magnetic-border);
+  border-radius: inherit;
+  background: var(--magnetic-face);
+  color: var(--magnetic-ink);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 13%), 0 1.1rem 2.4rem rgb(3 8 18 / 25%);
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  transition: box-shadow .2s ease, border-color .2s ease;
+}
+
+.magnetic-card:hover .magnetic-visual,
+.magnetic-card:focus-visible .magnetic-visual {
+  border-color: rgb(208 231 255 / 54%);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 20%), 0 1.7rem 3rem rgb(2 8 19 / 39%);
+}
+
+.magnetic-surface,
+.magnetic-glow,
+.magnetic-edge {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  backface-visibility: hidden;
+}
+
+.magnetic-surface {
+  background:
+    linear-gradient(145deg, rgb(255 255 255 / 9%), transparent 37%),
+    linear-gradient(160deg, rgb(121 171 220 / 9%), transparent 57%);
+  transform: translateZ(1px);
+}
+
+.magnetic-glow {
+  background: radial-gradient(
+    ellipse 70% 68% at 64% 20%,
+    rgb(137 196 255 / 34%),
+    rgb(137 196 255 / 9%) 45%,
+    transparent 74%
+  );
+  opacity: var(--magnetic-glow-strength);
+  transform: translateZ(calc(var(--magnetic-depth) * .28));
+}
+
+.magnetic-edge {
+  inset: -1px;
+  border: 1px solid rgb(241 250 255 / 23%);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 26%), inset 1px 0 0 rgb(255 255 255 / 9%);
+  transform: translateZ(calc(var(--magnetic-depth) * .48));
+}
+
+.magnetic-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+  min-width: 0;
+  padding: var(--magnetic-padding, clamp(1.25rem, 3vw, 2rem));
+  transform: translateZ(calc(var(--magnetic-depth) * .72));
+  backface-visibility: hidden;
+}
+
+.magnetic-visual::after {
+  content: '';
+  position: absolute;
+  right: 1.2rem;
+  bottom: .55rem;
+  left: 1.2rem;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgb(225 241 255 / 45%), transparent);
+  transform: translateZ(calc(var(--magnetic-depth) * .5));
+  pointer-events: none;
+}
+
+@media (hover: none) {
+  .magnetic-card::before,
+  .magnetic-visual { transition: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .magnetic-card,
+  .magnetic-card *,
+  .magnetic-card::before,
+  .magnetic-card *::before,
+  .magnetic-card *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+[data-magnetic-reduced-motion] .magnetic-card,
+[data-magnetic-reduced-motion] .magnetic-card *,
+[data-magnetic-reduced-motion] .magnetic-card::before,
+[data-magnetic-reduced-motion] .magnetic-card *::before,
+[data-magnetic-reduced-motion] .magnetic-card *::after {
+  animation: none !important;
+  transition: none !important;
+}
+
+@media (forced-colors: active) {
+  .magnetic-visual,
+  .magnetic-card:hover .magnetic-visual,
+  .magnetic-card:focus-visible .magnetic-visual {
+    border: 1px solid CanvasText;
+    box-shadow: none;
+  }
+
+  .magnetic-glow,
+  .magnetic-card::before { display: none; }
+}

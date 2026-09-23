@@ -1,0 +1,33 @@
+{
+  "name": "design-effects-library",
+  "version": "0.1.0",
+  "private": true,
+  "license": "UNLICENSED",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "tsc --noEmit && vite build",
+    "test": "vitest run",
+    "test:e2e": "playwright test",
+    "catalog:build": "node scripts/build-index.mjs",
+    "catalog:check": "node scripts/build-index.mjs --check",
+    "catalog:search": "node scripts/find-effect.mjs",
+    "library:start": "node scripts/library.mjs start",
+    "library:status": "node scripts/library.mjs status",
+    "library:stop": "node scripts/library.mjs stop",
+    "test:launcher": "node --test scripts/library.spec.node.mjs"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.63.0",
+    "@types/jsdom": "^30.0.0",
+    "@types/node": "^26.6.2",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "jsdom": "^29.1.1",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.0",
+    "vitest": "^5.0.1"
+  }
+}

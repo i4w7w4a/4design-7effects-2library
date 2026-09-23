@@ -1,0 +1,4 @@
+interface:
+  display_name: "4i7 Design"
+  short_description: "Поиск, настройка и перенос эффектов библиотеки"
+  default_prompt: "$4i7-design Открой мою библиотеку эффектов и покажи страницу каталога."

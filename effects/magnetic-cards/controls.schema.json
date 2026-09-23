@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Magnetic Cards options",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["radius", "travel", "responseMs", "tiltDeg", "depthPx", "perspectivePx", "glow", "reducedMotion"],
+  "properties": {
+    "radius": {
+      "type": "number",
+      "title": "Attraction radius",
+      "description": "Pointer distance where the card starts responding, in pixels.",
+      "minimum": 80,
+      "maximum": 420,
+      "default": 215
+    },
+    "travel": {
+      "type": "number",
+      "title": "Travel",
+      "description": "Maximum translation toward the pointer, in pixels.",
+      "minimum": 0,
+      "maximum": 48,
+      "default": 20
+    },
+    "responseMs": {
+      "type": "number",
+      "title": "Response time",
+      "description": "Motion smoothing time in milliseconds.",
+      "minimum": 70,
+      "maximum": 500,
+      "default": 150
+    },
+    "tiltDeg": {
+      "type": "number",
+      "title": "Tilt",
+      "description": "Maximum card rotation in degrees.",
+      "minimum": 0,
+      "maximum": 24,
+      "default": 13
+    },
+    "depthPx": {
+      "type": "number",
+      "title": "Layer depth",
+      "description": "Separation between card layers, in pixels.",
+      "minimum": 0,
+      "maximum": 80,
+      "default": 36
+    },
+    "perspectivePx": {
+      "type": "number",
+      "title": "Perspective",
+      "description": "CSS perspective distance in pixels; smaller values increase depth.",
+      "minimum": 350,
+      "maximum": 1400,
+      "default": 680
+    },
+    "glow": {
+      "type": "number",
+      "title": "Glow",
+      "description": "Highlight strength from zero to one.",
+      "minimum": 0,
+      "maximum": 1,
+      "default": 0.65
+    },
+    "reducedMotion": {
+      "type": "boolean",
+      "title": "Reduced motion",
+      "description": "Keep content and focus behavior while disabling pointer movement.",
+      "default": false
+    }
+  }
+}
